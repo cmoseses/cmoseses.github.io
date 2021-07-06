@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>地面图片叠加层</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <style>
+    body,
+    html,
+    #container {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        font-family: "微软雅黑";
+    }
+    </style>
+    <script src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=您的密钥"></script>
+</head>
+<body>
+  <label>x <input type="number" id="x" step="0.001" onchange="redraw()" value="0.736" /> </label> 
+  <label>y <input type="number" id="y" step="0.001" onchange="redraw()" value="0.65" /> </label> 
+  <label>flattening <input type="number" id="flattening" step="0.001" onchange="redraw()" value="1.147" /> </label> 
+  <label>size <input type="number" id="size" value="1.047" onchange="redraw()" step="0.001" /> </label> 
+  <button onclick="redraw()">绘图</button> 
+  <div id="container"></div>  
+</body>
+</html>
+<script>
+var map = new BMapGL.Map('container');
+var x = 0.736; // 地铁图x位移
+var y = 0.65; // 地铁图y位移
+var rate = 3511 / 2482; // https://www.chengdurail.com/underline.html 原始图片分辨率
+var e1 = 104.072618 - x; // 成都初始坐标
+var e2 = 30.664593 - y; // 成都初始坐标
+var e3;
+var e4;
+var pStart;
+var pEnd;
+var bounds;
+var size = 1.047; // 地铁图放大率
+var imgOverlay = null;
+map.centerAndZoom(new BMapGL.Point(e1, e2), 12);
+map.enableScrollWheelZoom(true);
+map.setDisplayOptions({
+  poiText: false,
+  // 隐藏poi标注
+  poiIcon: false,
+  // 隐藏poi图标
+  building: false // 隐藏楼块
+});
+
+redraw = function() {
+  if (imgOverlay) {
+    map.removeOverlay(imgOverlay);
+  }
+
+  x = document.getElementById("x").value;
+  y = document.getElementById("y").value;
+  flattening = document.getElementById("flattening").value ;
+  size = document.getElementById("size").value;
+
+  e1 = 104.072618 - x;
+  e2 = 30.664593 - y;
+  e3 = e1 + size * rate * flattening;
+  e4 = e2 + size * 1;
+  pStart = new BMapGL.Point(e1, e2);
+  pEnd = new BMapGL.Point(e3, e4);
+  console.log(e1, e2, e3, e4);
+  bounds = new BMapGL.Bounds(new BMapGL.Point(pStart.lng, pEnd.lat), new BMapGL.Point(pEnd.lng, pStart.lat));
+  imgOverlay = new BMapGL.GroundOverlay(bounds, {
+    type: 'image',
+    url: 'https://raw.githubusercontent.com/cmoseses/chengdu_railway_2021/main/chengdu_railway_2021.png',
+    opacity: 1
+  });
+  map.addOverlay(imgOverlay);
+}
+redraw()
+
+</script>
