@@ -1,7 +1,7 @@
 # chengdu_railway_2021
 
-图片源：
-https://www.chengdurail.com/underline.html《成都市城市轨道交通线网规划》(2021版)
+图片源：《成都市城市轨道交通线网规划》(2021版)
+https://www.chengdurail.com/underline.html
 
 使用方法：
 将index.html代码复制至https://lbsyun.baidu.com/jsdemo.htm#gImageGround
