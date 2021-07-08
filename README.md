@@ -1,6 +1,8 @@
 # chengdu_railway_2021
 
-https://cmoseses.github.io/
+直接访问  https://cmoseses.github.io/
+
+示例：![示例](https://github.com/cmoseses/chengdu_railway_2021/blob/main/demo.gif?raw=true)
 
 远期图片源： 《成都市城市轨道交通线网规划》（2021版）公布图
 
