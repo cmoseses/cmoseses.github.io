@@ -6,7 +6,7 @@ https://cmoseses.github.io/
 
 http://mpnr.chengdu.gov.cn/ghhzrzyj/ztgh/2021-07/06/content_302911dd05aa468b8d1acae8e779070c.shtml
 
-![远期规划图片源](http://mpnr.chengdu.gov.cn/ghhzrzyj/ztgh/2021-07/06/302911dd05aa468b8d1acae8e779070c/images/78801ec615ee48fa8399263ef7b3c0a5.jpg?raw=true)
+![远期规划图片源](https://github.com/cmoseses/chengdu_railway_2021/blob/main/chengdu_railway_2021_far.jpg?raw=true)
 
 远景图片源：《成都市城市轨道交通线网规划》(2021版)
 https://www.chengdurail.com/underline.html
