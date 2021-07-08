@@ -20,18 +20,20 @@
     <script src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=QXtzrZOE57w779ooLpehwjNIFUSmrg0b"></script>
 </head>
 <body>
-  <label>x <input type="number" id="x" step="0.001" onchange="redraw()" value="0.736" /> </label> 
-  <label>y <input type="number" id="y" step="0.001" onchange="redraw()" value="0.65" /> </label> 
-  <label>flattening <input type="number" id="flattening" step="0.001" onchange="redraw()" value="1.147" /> </label> 
-  <label>size <input type="number" id="size" value="1.047" onchange="redraw()" step="0.001" /> </label> 
+  <label>x <input type="number" id="x" step="0.001" onchange="redraw()" value="1.271" /> </label> 
+  <label>y <input type="number" id="y" step="0.001" onchange="redraw()" value="0.64" /> </label> 
+  <label>flattening <input type="number" id="flattening" step="0.001" onchange="redraw()" value="0.782" /> </label> 
+  <label>size <input type="number" id="size" value="2.122" onchange="redraw()" step="0.001" /> </label> 
+  <label>opacity <input type="number" id="opacity" value="0.6" onchange="redraw()" step="0.001" /> </label> 
   <button onclick="redraw()">绘图</button> 
   <div id="container"></div>  
 </body>
 </html>
 <script>
 var map = new BMapGL.Map('container');
-var x = 0.736; // 地铁图x位移
-var y = 0.65; // 地铁图y位移
+var x = 1.271; // 地铁图x位移
+var y = 0.64; // 地铁图y位移
+var opacity = 0.6 // 图层透明度
 var rate = 3511 / 2482; // https://www.chengdurail.com/underline.html 原始图片分辨率
 var e1 = 104.072618 - x; // 成都初始坐标
 var e2 = 30.664593 - y; // 成都初始坐标
@@ -40,7 +42,7 @@ var e4;
 var pStart;
 var pEnd;
 var bounds;
-var size = 1.047; // 地铁图放大率
+var size = 2.122; // 地铁图放大率
 var imgOverlay = null;
 map.centerAndZoom(new BMapGL.Point(e1, e2), 12);
 map.enableScrollWheelZoom(true);
@@ -61,6 +63,7 @@ redraw = function() {
   y = document.getElementById("y").value;
   flattening = document.getElementById("flattening").value ;
   size = document.getElementById("size").value;
+  opacity = document.getElementById("opacity").value;
 
   e1 = 104.072618 - x;
   e2 = 30.664593 - y;
@@ -73,7 +76,7 @@ redraw = function() {
   imgOverlay = new BMapGL.GroundOverlay(bounds, {
     type: 'image',
     url: 'https://raw.githubusercontent.com/cmoseses/chengdu_railway_2021/main/chengdu_railway_2021_far.jpg',
-    opacity: 0.3
+    opacity: opacity
   });
   map.addOverlay(imgOverlay);
 }
