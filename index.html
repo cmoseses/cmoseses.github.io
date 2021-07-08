@@ -72,8 +72,8 @@ redraw = function() {
   bounds = new BMapGL.Bounds(new BMapGL.Point(pStart.lng, pEnd.lat), new BMapGL.Point(pEnd.lng, pStart.lat));
   imgOverlay = new BMapGL.GroundOverlay(bounds, {
     type: 'image',
-    url: 'https://raw.githubusercontent.com/cmoseses/chengdu_railway_2021/main/chengdu_railway_2021.png',
-    opacity: 1
+    url: 'https://raw.githubusercontent.com/cmoseses/chengdu_railway_2021/main/chengdu_railway_2021_far.jpg',
+    opacity: 0.3
   });
   map.addOverlay(imgOverlay);
 }
