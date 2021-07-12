@@ -1,6 +1,6 @@
 # chengdu_railway_2021
 
-直接访问  https://cmoseses.github.io/
+直接访问  https://cmoseses.github.io/ 需要科学上网
 
 示例：![示例](https://github.com/cmoseses/chengdu_railway_2021/blob/main/demo.gif?raw=true)
 
